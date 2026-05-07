@@ -21,17 +21,15 @@ export const initialData = {
   expenses: [],
 };
 
-const normalizeCards = (cards = initialData.cards) =>
-  initialData.cards.map((fallback, index) => {
-    const card = cards[index] || fallback;
-    return {
-      ...fallback,
-      ...card,
-      id: fallback.id,
-      limit: Number(card.limit) || fallback.limit,
-      theme: card.theme || card.color || fallback.theme,
-    };
-  });
+const normalizeCards = (cards) => {
+  if (!Array.isArray(cards) || cards.length === 0) return initialData.cards;
+  return cards.map((card, index) => ({
+    id: card.id ?? index + 1,
+    name: card.name || `Cartão ${index + 1}`,
+    limit: Number(card.limit) || 1000,
+    theme: card.theme || card.color || CARD_THEMES[index % CARD_THEMES.length],
+  }));
+};
 
 export const getStorageData = () => {
   try {

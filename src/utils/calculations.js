@@ -9,7 +9,7 @@ export const CATEGORIES = [
   "Outros",
 ];
 
-export const CARD_THEMES = ["card-a", "card-b"];
+export const CARD_THEMES = ["card-a", "card-b", "card-c", "card-d", "card-e", "card-f"];
 
 export const getMonthKey = (date = new Date()) => {
   const safeDate = date instanceof Date ? date : new Date(`${date}T12:00:00`);

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { formatMoney } from "../utils/calculations";
+import { CARD_THEMES, formatMoney } from "../utils/calculations";
 
 export default function CardSettings({ cards, onSaveCards, onClose }) {
   const [draftCards, setDraftCards] = useState(cards.map((card) => ({ ...card })));
@@ -14,14 +14,26 @@ export default function CardSettings({ cards, onSaveCards, onClose }) {
     );
   };
 
+  const addCard = () => {
+    const newId = Math.max(...draftCards.map((c) => c.id), 0) + 1;
+    const theme = CARD_THEMES[draftCards.length % CARD_THEMES.length];
+    setDraftCards((current) => [
+      ...current,
+      { id: newId, name: `Cartão ${newId}`, limit: 1000, theme },
+    ]);
+  };
+
+  const removeCard = (cardId) => {
+    if (draftCards.length <= 1) return;
+    setDraftCards((current) => current.filter((card) => card.id !== cardId));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
     if (draftCards.some((card) => !card.name.trim() || Number(card.limit) <= 0)) {
-      alert("Informe nome e limite válido para os dois cartões.");
+      alert("Informe nome e limite válido para todos os cartões.");
       return;
     }
-
     onSaveCards(draftCards);
     onClose();
   };
@@ -32,7 +44,7 @@ export default function CardSettings({ cards, onSaveCards, onClose }) {
         <div className="sheet-header">
           <div>
             <span className="eyebrow">Configuração</span>
-            <h2>Editar cartões</h2>
+            <h2>Seus cartões</h2>
           </div>
           <button className="icon-button" type="button" onClick={onClose} aria-label="Fechar">
             ×
@@ -45,6 +57,16 @@ export default function CardSettings({ cards, onSaveCards, onClose }) {
               <legend>
                 <span className={`dot ${card.theme}`} />
                 Cartão {index + 1}
+                {draftCards.length > 1 && (
+                  <button
+                    className="text-button"
+                    type="button"
+                    onClick={() => removeCard(card.id)}
+                    style={{ marginLeft: "auto", color: "#ff6283", minHeight: "unset", fontSize: "0.74rem" }}
+                  >
+                    Remover
+                  </button>
+                )}
               </legend>
 
               <label>
@@ -60,9 +82,9 @@ export default function CardSettings({ cards, onSaveCards, onClose }) {
                 Limite
                 <input
                   type="number"
-                  inputMode="decimal"
+                  inputMode="numeric"
                   min="1"
-                  step="50"
+                  step="any"
                   value={card.limit}
                   onChange={(event) => updateCard(card.id, "limit", event.target.value)}
                 />
@@ -74,6 +96,10 @@ export default function CardSettings({ cards, onSaveCards, onClose }) {
               </div>
             </fieldset>
           ))}
+
+          <button className="secondary-button" type="button" onClick={addCard}>
+            + Adicionar cartão
+          </button>
 
           <div className="actions-row">
             <button className="secondary-button" type="button" onClick={onClose}>

@@ -84,7 +84,7 @@ export default function ExpenseForm({ cards, onAddExpense, onClose }) {
                 type="number"
                 inputMode="decimal"
                 min="0"
-                step="0.01"
+                step="any"
                 value={form.value}
                 onChange={updateField}
                 placeholder="0,00"

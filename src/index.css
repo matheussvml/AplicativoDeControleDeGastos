@@ -346,6 +346,22 @@ label {
   background: linear-gradient(135deg, #a54cf0 0%, #3d2ab8 100%);
 }
 
+.card-c {
+  background: linear-gradient(135deg, #1e6fd9 0%, #1045a8 100%);
+}
+
+.card-d {
+  background: linear-gradient(135deg, #0891b2 0%, #0a6080 100%);
+}
+
+.card-e {
+  background: linear-gradient(135deg, #059669 0%, #065f46 100%);
+}
+
+.card-f {
+  background: linear-gradient(135deg, #d97706 0%, #92400e 100%);
+}
+
 .card-topline,
 .card-money,
 .card-footer,
@@ -596,6 +612,91 @@ label {
 
 .muted {
   color: #817b94;
+}
+
+.chart-panel {
+  padding: 14px;
+}
+
+.chart-empty {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.donut-wrapper {
+  position: relative;
+  width: 180px;
+  margin: 4px auto 16px;
+}
+
+.donut-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.donut-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  pointer-events: none;
+}
+
+.donut-center span {
+  color: #6f6a82;
+  font-size: 0.62rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.donut-center strong {
+  color: #f6f1ff;
+  font-size: 0.88rem;
+  font-weight: 900;
+}
+
+.chart-legend {
+  display: grid;
+  gap: 9px;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-label {
+  flex: 1;
+  color: #dad4ec;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.legend-value {
+  color: #f6f1ff;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.legend-pct {
+  min-width: 34px;
+  color: #6f6a82;
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-align: right;
 }
 
 .fab {

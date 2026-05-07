@@ -4,6 +4,7 @@ import CardSummary from "./components/CardSummary";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import MonthSelector from "./components/MonthSelector";
+import SpendingChart from "./components/SpendingChart";
 import Stats from "./components/Stats";
 import { getStorageData, saveStorageData } from "./utils/storage";
 import {
@@ -130,6 +131,7 @@ export default function App() {
               onEditCard={() => setShowSettings(true)}
             />
           ))}
+          <SpendingChart expenses={data.expenses} monthKey={monthKey} />
         </section>
       )}
 
