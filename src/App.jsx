@@ -76,11 +76,9 @@ export default function App() {
     <main className="app-shell">
       <header className="app-header">
         <div className="top-icons">
-          <button className="round-icon" type="button" aria-label="Menu">
-            ≡
-          </button>
-          <button className="round-icon" type="button" onClick={() => setShowSettings(true)} aria-label="Ajustes">
-            ◎
+          <button className="round-icon labeled" type="button" onClick={() => setShowSettings(true)} aria-label="Cartões">
+            <span>◎</span>
+            <span>Cartões</span>
           </button>
         </div>
         <div className="balance-hero">

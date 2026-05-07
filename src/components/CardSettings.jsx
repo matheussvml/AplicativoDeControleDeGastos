@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CARD_THEMES, formatMoney } from "../utils/calculations";
 
 export default function CardSettings({ cards, onSaveCards, onClose }) {
   const [draftCards, setDraftCards] = useState(cards.map((card) => ({ ...card })));
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
 
   const updateCard = (cardId, field, value) => {
     setDraftCards((current) =>

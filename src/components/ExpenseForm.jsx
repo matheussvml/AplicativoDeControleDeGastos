@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CATEGORIES, createInstallments, formatMoney } from "../utils/calculations";
 
 const today = () => new Date().toISOString().slice(0, 10);
@@ -13,6 +13,11 @@ export default function ExpenseForm({ cards, onAddExpense, onClose }) {
     installments: 1,
     observation: "",
   });
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
 
   const installmentPreview = useMemo(() => {
     const value = Number(form.value) || 0;
@@ -65,17 +70,6 @@ export default function ExpenseForm({ cards, onAddExpense, onClose }) {
             </select>
           </label>
 
-          <label>
-            Descrição
-            <input
-              name="description"
-              value={form.description}
-              onChange={updateField}
-              placeholder="Mercado, farmácia, assinatura..."
-              autoFocus
-            />
-          </label>
-
           <div className="two-columns">
             <label>
               Valor total
@@ -88,6 +82,7 @@ export default function ExpenseForm({ cards, onAddExpense, onClose }) {
                 value={form.value}
                 onChange={updateField}
                 placeholder="0,00"
+                autoFocus
               />
             </label>
             <label>
@@ -102,6 +97,16 @@ export default function ExpenseForm({ cards, onAddExpense, onClose }) {
               />
             </label>
           </div>
+
+          <label>
+            Descrição
+            <input
+              name="description"
+              value={form.description}
+              onChange={updateField}
+              placeholder="Mercado, farmácia, assinatura..."
+            />
+          </label>
 
           <div className="two-columns">
             <label>
