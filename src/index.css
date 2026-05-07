@@ -614,6 +614,74 @@ label {
   color: #817b94;
 }
 
+.stat-chips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.stat-chip {
+  display: grid;
+  gap: 5px;
+  padding: 12px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 22px;
+  background: #121023;
+  text-align: center;
+}
+
+.stat-chip span {
+  color: #6f6a82;
+  font-size: 0.58rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stat-chip strong {
+  overflow-wrap: anywhere;
+  color: #f9f7ff;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.trend-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 4px;
+}
+
+.trend-bar {
+  fill: #221f38;
+}
+
+.trend-bar.current {
+  fill: #7f45ee;
+}
+
+.trend-baseline {
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 1;
+}
+
+.trend-label {
+  fill: #4e4a64;
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: capitalize;
+}
+
+.trend-label.current {
+  fill: #a987ff;
+}
+
+.trend-value {
+  fill: #f6f1ff;
+  font-size: 8px;
+  font-weight: 900;
+}
+
 .chart-panel {
   padding: 14px;
 }
